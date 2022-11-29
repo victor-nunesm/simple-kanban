@@ -1,5 +1,7 @@
-import { Grid, List, Paper } from '@mui/material'
+import styled from '@emotion/styled'
+import { List, Paper } from '@mui/material'
 import React from 'react'
+import Grid from '../../../../components/atoms/Grid'
 import Typography from '../../../../components/atoms/Typography'
 import KanbanListItemsProvider from '../../../../contexts/KanbanListItemsContext'
 import CreateListItem from './components/CreateListItem'
@@ -10,6 +12,12 @@ export interface IKanbanList {
   title: string
   listId: string
 }
+
+const GridWithOverflow = styled(Grid)`
+  max-height: 90vh;
+  overflow: auto;
+  padding: 0px 5px;
+`
 
 const KanbanList: React.FC<IKanbanList> = ({ title, listId }) => {
   return (
@@ -26,12 +34,12 @@ const KanbanList: React.FC<IKanbanList> = ({ title, listId }) => {
             <ListMenu listId={listId} />
           </Grid>
 
-          <Grid item xs={12}>
+          <GridWithOverflow item xs={12}>
             <List id={listId} key={listId} sx={{ display: 'flex', gap: 1, flexDirection: 'column' }}>
               <ListItems />
             </List>
             <CreateListItem listId={listId} />
-          </Grid>
+          </GridWithOverflow>
         </KanbanListItemsProvider>
       </Grid>
     </Paper>
