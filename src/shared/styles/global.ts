@@ -15,10 +15,11 @@ const globalStyles = css`
   }
 
   #root {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: transparent;
   }
 

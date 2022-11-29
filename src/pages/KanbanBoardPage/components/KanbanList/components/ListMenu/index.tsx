@@ -1,4 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import React from 'react'
 import DropdownMenu from '../../../../../../components/molecules/DropdownMenu'
 import useKanbanListItems from '../../../../../../hooks/useKabanListItems'
@@ -17,8 +18,13 @@ const ListMenu: React.FC<IListMenu> = ({ listId }) => {
   }
 
   const menuItems = [
-    { id: 'delete-list', label: 'Apagar', onClick: handleDeleteList, muiIcon: DeleteIcon },
-    { id: 'delete-all-list=items', label: 'Apagar todos os cartões', onClick: deleteAllListItems, muiIcon: DeleteIcon },
+    { id: 'delete-list', label: 'Apagar lista', onClick: handleDeleteList, muiIcon: DeleteIcon },
+    {
+      id: 'delete-all-list=items',
+      label: 'Apagar todos os cartões',
+      onClick: deleteAllListItems,
+      muiIcon: DeleteForeverIcon,
+    },
   ]
 
   return <DropdownMenu menuItems={menuItems} />

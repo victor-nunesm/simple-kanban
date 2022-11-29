@@ -14,7 +14,7 @@ export interface IKanbanList {
 }
 
 const GridWithOverflow = styled(Grid)`
-  max-height: 90vh;
+  max-height: 80vh;
   overflow: auto;
   padding: 0px 5px;
 `

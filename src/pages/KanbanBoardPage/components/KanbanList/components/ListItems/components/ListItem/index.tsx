@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import { ListItem as MuiListItem, ListItemText } from '@mui/material'
 import React, { useState } from 'react'
 import ListItemMenu from '../ListItemMenu'
@@ -6,6 +7,15 @@ export interface IListItem {
   itemId: string
   title: string
 }
+
+const StyledListItem = styled(MuiListItem)({
+  overflowWrap: 'anywhere',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  '&:hover, &:focus': {
+    backgroundColor: '#15273921',
+  },
+})
 
 const ListItem: React.FC<IListItem> = ({ itemId, title }) => {
   const [showListItemMenu, setShowListItemMenu] = useState(false)
@@ -36,22 +46,9 @@ const ListItem: React.FC<IListItem> = ({ itemId, title }) => {
 
   return (
     <>
-      <MuiListItem
-        id={itemId}
-        key={itemId}
-        onClick={displayMenu}
-        sx={{
-          overflowWrap: 'anywhere',
-          borderRadius: '4px',
-          backgroundColor: 'primary.dark',
-          cursor: 'pointer',
-          '&:hover, &:focus': {
-            backgroundColor: '#1527398c',
-          },
-        }}
-      >
-        <ListItemText id={`label-${itemId}`} primary={title} />
-      </MuiListItem>
+      <StyledListItem id={itemId} key={itemId} onClick={displayMenu}>
+        <ListItemText id={`label-${itemId}`} primary={title} sx={{ '.MuiTypography-root': { fontSize: '1rem' } }} />
+      </StyledListItem>
       <ListItemMenu
         isOpen={showListItemMenu}
         itemId={itemId}

@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import { Paper } from '@mui/material'
 import React from 'react'
 import useKanbanListItems from '../../../../../../hooks/useKabanListItems'
@@ -11,14 +12,18 @@ interface IMemoizedListItem {
   title: string
 }
 
+const ListItemContainer = styled(Paper)`
+  display: flex;
+  min-height: 40px;
+  border-radius: 4px;
+  background-color: transparent;
+`
+
 const MemoizedListItem = React.memo<IMemoizedListItem>(({ itemId, title }) => {
   return (
-    <Paper
-      sx={{ display: 'flex', minHeight: '40px', borderRadius: '4px', backgroundColor: 'transparent' }}
-      elevation={3}
-    >
+    <ListItemContainer elevation={3}>
       <ListItem itemId={itemId} title={title} />
-    </Paper>
+    </ListItemContainer>
   )
 })
 
